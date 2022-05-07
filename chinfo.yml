@@ -1,0 +1,23 @@
+create git repo
+create new project vs22
+add the repo and first commit 
+after that use git commit or stash from visual studio 2022 vs22
+
+ref https://www.youtube.com/watch?v=Fbf_ua2t6v4
+to work with sql server 
+  click right manage nuget package
+		
+        sqlserver  // to use to communicate with sqlserver
+		design  // for migration
+		core  // for core
+		add connection string appsetting json
+		 "DefaultConnection" : "server=localhost\\sqlexpress;database=superherodb;trusted_connection=true"
+
+		install entity framework
+		dotnet tool install --global dotnet-ef
+		dotnet ef
+
+		migration and database creation suppose that models is already created in models directory
+
+create dbcontext layer globally and add it to global service in program cs
+use dbcontext 
