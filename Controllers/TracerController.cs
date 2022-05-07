@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace tracerapi.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
 
+    [ApiController]
 
     public class TracerController : ControllerBase
     {
@@ -26,16 +26,16 @@ namespace tracerapi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<TracerModel>> Get(int id)
         {
-            var hero = await _context.TracerModels.FindAsync(id);
-            if (hero == null)
-                return BadRequest("Hero not found.");
-            return Ok(hero);
+            var incident = await _context.TracerModels.FindAsync(id);
+            if (incident == null)
+                return BadRequest("incident not found.");
+            return Ok(incident);
         }
 
         [HttpPost]
-        public async Task<ActionResult<List<TracerModel>>> AddHero(TracerModel hero)
+        public async Task<ActionResult<List<TracerModel>>> AddHero(TracerModel incident)
         {
-            _context.TracerModels.Add(hero);
+            _context.TracerModels.Add(incident);
             await _context.SaveChangesAsync();
 
             return Ok(await _context.TracerModels.ToListAsync());
@@ -44,14 +44,14 @@ namespace tracerapi.Controllers
         [HttpPut]
         public async Task<ActionResult<List<TracerModel>>> UpdateHero(TracerModel request)
         {
-            var dbHero = await _context.TracerModels.FindAsync(request.Id);
-            if (dbHero == null)
-                return BadRequest("Hero not found.");
+            var dbincident = await _context.TracerModels.FindAsync(request.Id);
+            if (dbincident == null)
+                return BadRequest("incident not found.");
 
-            dbHero.Name = request.Name;
-            dbHero.FirstName = request.FirstName;
-            dbHero.LastName = request.LastName;
-            dbHero.Place = request.Place;
+            dbincident.Name = request.Name;
+            dbincident.FirstName = request.FirstName;
+            dbincident.LastName = request.LastName;
+            dbincident.Place = request.Place;
 
             await _context.SaveChangesAsync();
 
@@ -61,11 +61,11 @@ namespace tracerapi.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<List<TracerModel>>> Delete(int id)
         {
-            var dbHero = await _context.TracerModels.FindAsync(id);
-            if (dbHero == null)
-                return BadRequest("Hero not found.");
+            var dbincident = await _context.TracerModels.FindAsync(id);
+            if (dbincident == null)
+                return BadRequest("incident not found.");
 
-            _context.TracerModels.Remove(dbHero);
+            _context.TracerModels.Remove(dbincident);
             await _context.SaveChangesAsync();
 
             return Ok(await _context.TracerModels.ToListAsync());
