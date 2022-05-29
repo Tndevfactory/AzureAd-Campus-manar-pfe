@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-
+using tracerapi.Models;
 
 namespace tracerapi.Data
 {
@@ -7,6 +7,9 @@ namespace tracerapi.Data
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
-        public DbSet<TracerModel> TracerModels { get; set; }
+        public DbSet<Incident> Incidents { get; set; }
+        public DbSet<Intervention> Interventions { get; set; } 
+        public DbSet<Tache> Taches { get; set; }
+       
     }
 }

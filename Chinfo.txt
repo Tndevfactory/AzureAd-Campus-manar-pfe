@@ -20,10 +20,14 @@ migration and database creation suppose that models is already created end of pr
 package manager console run
 
 dotnet ef migrations add createInitial
-
+dotnet ef migrations add createCtrl
 create db
 dotnet ef database update
 
 
 create dbcontext layer globally and add it to global service in program cs
 use dbcontext 
+
+
+delete this line from csproj solution tracerapi top of the project 
+ <Nullable>enable</Nullable>
