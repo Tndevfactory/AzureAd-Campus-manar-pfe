@@ -15,11 +15,14 @@ namespace tracerapi
 
         private readonly IConfiguration _configuration;
         //  private readonly IUserService _userService;
+        private readonly DataContext _context;
 
-        public AuthController(IConfiguration configuration)
+        public AuthController(IConfiguration configuration, DataContext context)
         {
             _configuration = configuration;
+            _context = context;
             //  _userService = userService;
+           
         }
 
 
@@ -29,26 +32,40 @@ namespace tracerapi
             CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
 
             user.Username = request.Username;
+            user.Email = request.Email;
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
+            string token = CreateToken(user);
+            user.AccessToken = token;
+            user.TokenCreated = DateTime.Now;
+            user.TokenExpires = DateTime.Now;
+
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
 
             return Ok(user);
         }
 
         [HttpPost("login")]
         public async Task<ActionResult<string>> Login(UserDto request)
+                        
         {
-            if (user.Username != request.Username)
+            var userdb = await _context.Users.FindAsync(1);
+
+            if (userdb.Email != request.Email)
             {
                 return BadRequest("User not found.");
             }
 
-            if (!VerifyPasswordHash(request.Password, user.PasswordHash, user.PasswordSalt))
+            if (!VerifyPasswordHash(request.Password, userdb.PasswordHash, userdb.PasswordSalt))
             {
                 return BadRequest("Wrong password.");
             }
 
             string token = CreateToken(user);
+            userdb.AccessToken = token;
+
+            await _context.SaveChangesAsync();
 
             return Ok(token);
         }
@@ -59,7 +76,7 @@ namespace tracerapi
         {
             List<Claim> claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, user.Username),
+                new Claim(ClaimTypes.Name, user.Email),
                 new Claim(ClaimTypes.Role, "Admin")
             };
 
@@ -70,7 +87,7 @@ namespace tracerapi
 
             var token = new JwtSecurityToken(
                 claims: claims,
-                expires: DateTime.Now.AddDays(1),
+                expires: DateTime.Now.AddDays(15),
                 signingCredentials: creds);
 
             var jwt = new JwtSecurityTokenHandler().WriteToken(token);
