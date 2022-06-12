@@ -143,8 +143,4 @@ C:\Users\user\Source\Repos\AzureAd-Campus-manar-pfe\obj\Release\net6.0\tracerapi
 C:\Users\user\Source\Repos\AzureAd-Campus-manar-pfe\obj\Release\net6.0\tracerapi.genruntimeconfig.cache
 C:\Users\user\Source\Repos\AzureAd-Campus-manar-pfe\obj\Release\net6.0\ref\tracerapi.dll
 C:\Users\user\source\repos\AzureAd-Campus-manar-pfe\bin\Release\net6.0\libman.json
-C:\Users\user\source\repos\AzureAd-Campus-manar-pfe\bin\Release\net6.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\user\source\repos\AzureAd-Campus-manar-pfe\bin\Release\net6.0\Microsoft.IdentityModel.Abstractions.dll
-C:\Users\user\source\repos\AzureAd-Campus-manar-pfe\bin\Release\net6.0\Scrutor.dll
-C:\Users\user\source\repos\AzureAd-Campus-manar-pfe\bin\Release\net6.0\Swashbuckle.AspNetCore.Filters.dll
-C:\Users\user\source\repos\AzureAd-Campus-manar-pfe\bin\Release\net6.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll

@@ -265,3 +265,4 @@ C:\Users\user\source\repos\AzureAd-Campus-manar-pfe\obj\Debug\net6.0\tracerapi.p
 C:\Users\user\source\repos\AzureAd-Campus-manar-pfe\obj\Debug\net6.0\tracerapi.genruntimeconfig.cache
 C:\Users\user\source\repos\AzureAd-Campus-manar-pfe\obj\Debug\net6.0\ref\tracerapi.dll
 C:\Users\user\source\repos\AzureAd-Campus-manar-pfe\bin\Debug\net6.0\libman.json
+C:\Users\user\source\repos\AzureAd-Campus-manar-pfe\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
